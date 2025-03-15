@@ -19,7 +19,7 @@ export const useOrderStore = create<OrderState>((set) => ({
       orders: [
         order,
         ...state.orders.filter((o) => o.order_id !== order.order_id),
-      ],
+      ].sort((a, b) => a.order_id - b.order_id),
     })),
   updateOrder: (updatedOrder: Order) =>
     set((state) => {

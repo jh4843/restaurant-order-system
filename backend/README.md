@@ -10,6 +10,7 @@ $ venv\Scripts\activate ## For Windows
 ```
 
 ### Run
+
 ```bash
 $ uvicorn main:app --reload
 ```
