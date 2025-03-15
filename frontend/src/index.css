@@ -1,8 +1,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* Custom only if needed */
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-}

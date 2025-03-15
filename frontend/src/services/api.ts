@@ -12,6 +12,14 @@ export const postOrder = async (
   return res.data;
 };
 
+export const updateOrderStatus = async (orderId: number): Promise<Order> => {
+  const url = `${
+    import.meta.env.VITE_API_BASE_URL
+  }/order/${orderId}/processing`;
+  const res = await axios.patch(url);
+  return res.data;
+};
+
 export const fetchAllOrders = async (): Promise<Order[]> => {
   const res = await api.get("/orders");
   return res.data;
