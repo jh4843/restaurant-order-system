@@ -36,6 +36,7 @@
 
 ### Environment
 
+- backend는 develop에서 CORS를 허용하였다.
 - Server IP는 127.0.0.1, Port는 80000 포트로 Run 하도록 .env에 정의해두었다.
 - 그에 따라 Frontend에서도 해당 IP와 Port로 API 요청을 보내도록 설정하였다.
   - VITE_API_BASE_URL=http://127.0.0.1:8000
