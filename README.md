@@ -73,6 +73,12 @@ npm install
 npm run dev
 ```
 
+## Performance Optimization
+
+1. Websocket 사용시 전체 데이터가 아닌 변경된 데이터만 전송
+2. 컴포넌트를 분리하여 상태를 Zustand Store에서만 관리하여 각 컴포넌트가 최소한의 상태만 구독하도록 구성
+3. Backend에서 Broadcast시, 비동기를 통해 전송하여 서버 I/O 부하 최소화
+
 ## Directory Structure
 
 ```
