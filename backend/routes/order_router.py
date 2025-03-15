@@ -17,3 +17,7 @@ async def create_order(order: OrderRequest):
       "order_id": order_data["order_id"],
       "message": "주문이 접수되었습니다"
   }
+
+@router.get("/orders")
+async def get_orders():
+  return order_service.get_all_orders()

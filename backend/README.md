@@ -1,6 +1,6 @@
-# RESTRAUNT-ORDER-SYSTEM
+# BACKEND for RESTRAUNT-ORDER-SYSTEM
 
-## 설치 Modules
+## 설치 모듈
 
 ### 가상환경 활성화
 
@@ -43,4 +43,10 @@ pip install black isort pylint mypy
 
 ```bash
 pytest tests/
+```
+
+## 테스트 서버 실행
+
+```
+$ uvicorn main:app --reload
 ```

@@ -1,2 +1,140 @@
 # restaurant-order-system
-The system manage orders for restaurant (front-end + back-end)
+
+## Overview
+
+- 고객은 음식명과 수량을 입력하여 주문을 생성
+- 서버는 주문을 처리하고 실시간으로 대시보드에 전송
+- 다수 사용자가 동시에 접속해도 원활히 처리되는 구조 설계
+
+## System Design
+
+### Frontend
+
+- React + Vite 기반 SPA
+- REST API + WebSocket 통합 구조
+- MVVM 아키텍처 기반 구조화
+
+### Backend
+
+- FastAPI 기반 REST API 서버
+- `POST /order` → 주문 접수
+- `GET /orders` → 전체 주문 목록 조회
+- WebSocket 브로드캐스트로 실시간 주문 전파
+- 임시 저장소 (in-memory list) 사용
+
+## Features
+
+| 기능                               | 구현 방식                              |
+| ---------------------------------- | -------------------------------------- |
+| 주문 입력                          | React Form + REST POST 요청            |
+| 주문 접수 응답                     | FastAPI 응답 메시지 처리               |
+| 대시보드 목록 표시                 | 상태 기반 테이블                       |
+| 실시간 주문 수신                   | WebSocket 메시지 수신 및 상태 업데이트 |
+| 최초 페이지 진입 시 전체 주문 수신 | `GET /orders`로 초기화 처리            |
+
+---
+
+## Run the Project
+
+### Backend
+
+#### Product version
+
+```bash
+cd backend
+python -m venv venv
+venv\Scripts\activate  # Windows 기준
+pip install -r requirements.txt
+uvicorn main:app --reload
+```
+
+#### Development version
+
+```bash
+cd backend
+python -m venv venv
+venv\Scripts\activate  # Windows 기준
+pip install -r requirements-dev.txt
+uvicorn main:app --reload
+```
+
+### Frontend
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+## Directory Structure
+
+```
+
+restaurant-order-system
+├─ backend
+│ ├─ main.py
+│ ├─ models
+│ │ ├─ order_model.py
+│ │ └─ **init**.py
+│ ├─ README.md
+│ ├─ requirements-dev.txt
+│ ├─ requirements.txt
+│ ├─ routes
+│ │ ├─ order_router.py
+│ │ ├─ ws_router.py
+│ │ └─ **init**.py
+│ ├─ services
+│ │ ├─ order_service.py
+│ │ └─ **init**.py
+│ ├─ tests
+│ │ ├─ integration
+│ │ ├─ test_order_api.py
+│ │ ├─ test_order_service.py
+│ │ ├─ unit
+│ │ └─ **init**.py
+│ └─ websocket
+│ └─ connection_manager.py
+├─ frontend
+│ ├─ eslint.config.js
+│ ├─ index.html
+│ ├─ package-lock.json
+│ ├─ package.json
+│ ├─ postcss.config.js
+│ ├─ public
+│ │ └─ vite.svg
+│ ├─ README.md
+│ ├─ src
+│ │ ├─ App.css
+│ │ ├─ App.tsx
+│ │ ├─ assets
+│ │ │ └─ react.svg
+│ │ ├─ components
+│ │ │ ├─ OrderForm.tsx
+│ │ │ └─ OrderTable.tsx
+│ │ ├─ hooks
+│ │ ├─ index.css
+│ │ ├─ main.tsx
+│ │ ├─ pages
+│ │ │ ├─ DashboardPage.tsx
+│ │ │ └─ OrderPage.tsx
+│ │ ├─ services
+│ │ │ ├─ api.ts
+│ │ │ └─ websocket.ts
+│ │ ├─ stores
+│ │ │ └─ orderStore.ts
+│ │ ├─ types
+│ │ │ └─ order.ts
+│ │ ├─ utils
+│ │ └─ vite-env.d.ts
+│ ├─ tailwind.config.js
+│ ├─ tsconfig.app.json
+│ ├─ tsconfig.json
+│ ├─ tsconfig.node.json
+│ └─ vite.config.ts
+└─ README.md
+
+```
+
+```
+
+```
